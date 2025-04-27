@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelir-Gider Takip Sistemi</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Gelir-Gider Takip Sistemi</h1>
+
+        <div class="balance-container">
+            <h2>Toplam Bakiye: <span id="total-balance">0</span> TL</h2>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-wrapper">
+                <h2>Aylık Gelir-Gider Grafiği</h2>
+                <canvas id="monthlyChart"></canvas>
+            </div>
+            <div class="chart-wrapper">
+                <h2>Kategori Bazlı Harcamalar</h2>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="transaction-form">
+                <div class="form-group">
+                    <label for="type">İşlem Tipi:</label>
+                    <select id="type" required>
+                        <option value="gelir">Gelir</option>
+                        <option value="gider">Gider</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Kategori:</label>
+                    <select id="category" required>
+                        <option value="maas">Maaş</option>
+                        <option value="yatirim">Yatırım</option>
+                        <option value="kira">Kira</option>
+                        <option value="market">Market</option>
+                        <option value="faturalar">Faturalar</option>
+                        <option value="diger">Diğer</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Miktar (TL):</label>
+                    <input type="number" id="amount" required min="0" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Tarih:</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Açıklama:</label>
+                    <input type="text" id="description" required>
+                </div>
+
+                <button type="submit">Ekle</button>
+            </form>
+        </div>
+
+        <div class="transactions-container">
+            <h2>İşlem Geçmişi</h2>
+            <table id="transactions-table">
+                <thead>
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Tip</th>
+                        <th>Kategori</th>
+                        <th>Açıklama</th>
+                        <th>Miktar</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody id="transactions-list"></tbody>
+            </table>
+        </div>
+
+        <div class="monthly-summary">
+            <h2>Aylık Özet</h2>
+            <table id="monthly-table">
+                <thead>
+                    <tr>
+                        <th>Ay</th>
+                        <th>Toplam Gelir</th>
+                        <th>Toplam Gider</th>
+                        <th>Net Durum</th>
+                    </tr>
+                </thead>
+                <tbody id="monthly-list"></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
